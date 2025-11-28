@@ -5,9 +5,13 @@ from __future__ import annotations
 import asyncio
 import base64
 import concurrent.futures
+import os
 import time
 from pathlib import Path
 from typing import Dict, Tuple
+
+# Allow PyTorch (libiomp5md) and OpenCV (libomp) to coexist on Windows.
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
 
 import cv2
 from ultralytics import YOLO
